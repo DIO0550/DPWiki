@@ -1,0 +1,66 @@
+# docker-compose.ymlフォーマットのバージョン
+version: '3'
+services:
+  # Railsコンテナ定義
+  rails:
+    # Dockerfileを使用してイメージをビルド
+    build: .
+    # コンテナ起動時のコマンド
+    # ポート番号：3000
+    # バインドするIPアドレス：0.0.0.0
+    # ポート3000が来たらrailsサーバーが応答
+    command: [ "bash", "-c", "rm -f tmp/pids/server.pid; RAILS_ENV=development bundle exec rdebug-ide --host 0.0.0.0 --port 1234 --dispatcher-port 26162 -- bin/rails s -b 0.0.0.0" ]
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: react
+      WEBPACKER_DEV_SERVER_PUBLIC: 0.0.0.0:3035
+    # ローカルのsrcをコンテナにマウント
+    volumes:
+      - ./src:/DPWiki
+    # コンテナの外部に3000番を公開
+    # 公開するポート番号：コンテナ内部の転送先ポート番号
+    ports:
+      - 3000:3000
+      - 1234:1234
+      - 26162:26162
+    # dbとwebpackerを先に起動
+    depends_on:
+      - db
+    # pryを使用してデバッグができるよう設定
+    tty: true
+    stdin_open: true
+  # webpacker
+  react:
+    build: .
+    command: [ bash, -c, 'npm run dev --prefix /frontend/']
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    volumes:
+     - ./src:/DPWiki
+    ports:
+     - 3035:3035
+    networks:
+     - docker-network
+    restart: always
+    depends_on:
+         - rails
+  # MySQLコンテナ定義
+  db:
+    # mysql8.0でコンテナ作成
+    image: mysql:8.0
+    volumes:
+      # Mysql8.0のデフォルトの認証形式をmysql_native_passwordに設定
+      - ./mysql-confd:/etc/mysql/conf.d
+      # ローカルで保持しているDBをコンテナにマウント
+      - db-volume:/var/lib/mysql
+    # コンテナ内の環境変数を定義
+    environment:
+      # mysqlのルートユーザーのパスワード設定
+      MYSQL_ROOT_PASSWORD: minesweeper
+      MYSQL_DATABASE: minesweeper
+      MYSQL_USER: minesweeper
+      MYSQL_PASSWORD: minesweeper
+# DBの内容をローカルに保持
+volumes:
+  db-volume:
+networks:
+  docker-network:
