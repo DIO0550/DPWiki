@@ -1,1 +1,1 @@
-# DPokemonWiki
+# DPWiki
