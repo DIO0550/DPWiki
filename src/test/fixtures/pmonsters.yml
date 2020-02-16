@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: MyString
+  type1: one
+  type2: one
+  hit_point: 1
+  attack: 
+  defence: 
+  special_attack: 
+  special_defence: 
+  speed: 
+
+two:
+  id: 1
+  name: MyString
+  type1: two
+  type2: two
+  hit_point: 1
+  attack: 
+  defence: 
+  special_attack: 
+  special_defence: 
+  speed: 
