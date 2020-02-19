@@ -4,10 +4,11 @@ require 'logger'
 class InitializePMonster < ActiveRecord::Migration[6.0]
   
   def change
-    csv_path = File.expand_path('../../csv/pmonster.csv', __FILE__)
+    csv_path = File.expand_path('../../csv/pmonsters.csv', __FILE__)
     CSV.foreach(csv_path, headers: true) do |row|
       log_path = File.expand_path('../../../log/migrate.log', __FILE__)
       log = Logger.new(log_path)
+      log.info(row)
       column_data = {
         number: row["Number"],
         name: row["Name"],

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_02_18_125849) do
 
-  create_table "pmonsters", primary_key: "number", id: :string, limit: 5, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "pmonsters", primary_key: "number", id: :string, limit: 7, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "type1_id", null: false
     t.integer "type2_id", null: false
