@@ -13,6 +13,7 @@ services:
     environment:
       WEBPACKER_DEV_SERVER_HOST: react
       WEBPACKER_DEV_SERVER_PUBLIC: 0.0.0.0:3035
+      DB_SERVER_HOST: db
     # ローカルのsrcをコンテナにマウント
     volumes:
       - ./src:/DPWiki
