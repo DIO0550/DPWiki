@@ -30,11 +30,11 @@ services:
   # webpacker
   react:
     build: .
-    command: [ bash, -c, 'rm -rf /DPWikiWiki/public/packs;  npm run dev --prefix frontend/']
+    command: [ bash, -c, 'npm run start --prefix frontend/']
     environment:
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
     volumes:
-     - ./src:/DPWikiWiki
+     - ./src:/DPWiki
     ports:
      - 3035:3035
     networks:
