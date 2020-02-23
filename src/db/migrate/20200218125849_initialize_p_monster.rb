@@ -11,7 +11,7 @@ class InitializePMonster < ActiveRecord::Migration[6.0]
       log.info(row)
       column_data = {
         number: row["Number"],
-        name: row["Name"],
+        monster_name: row["Name"],
         type1_id: row["Type1"],
         type2_id: row["Type2"],
         hit_point: row["HitPoint"],

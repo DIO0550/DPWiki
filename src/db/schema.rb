@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_02_18_125849) do
 
   create_table "pmonsters", primary_key: "number", id: :string, limit: 7, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "monster_name"
     t.integer "type1_id", null: false
     t.integer "type2_id", null: false
     t.integer "hit_point"
@@ -29,14 +29,14 @@ ActiveRecord::Schema.define(version: 2020_02_18_125849) do
   end
 
   create_table "type1s", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "type1_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["id"], name: "index_type1s_on_id", unique: true
   end
 
   create_table "type2s", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "type2_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["id"], name: "index_type2s_on_id", unique: true
