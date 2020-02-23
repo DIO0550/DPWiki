@@ -31,8 +31,5 @@ ADD src/ /DPWiki
 # Gemのインストール実行
 RUN bundle install
 
-#RUN npm install --prefix DPWikiWiki/frontend/ --save DPWikiWiki/frontend/ webpack webpack-dev-server webpack-cli html-webpack-plugin react react-dom @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/register
-
-
 # デバッグで使用するポートを公開する
 EXPOSE 3000 1234 26162
