@@ -33,7 +33,18 @@ module.exports = {
             presets: ['@babel/preset-react']
           }
         }]
-      }
+      }, 
+      {
+        test: /\.(scss|sass|css)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {  modules: true }
+          },
+          'sass-loader'
+        ]
+      },
     ]
   },
   plugins: [
