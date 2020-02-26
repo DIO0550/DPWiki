@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import APP_CONST from '../js/app-const.jsx';
+import * as monster_sort from '../js/monster-sort.jsx';
+import '../stylesheet/monster-list.sass';
 
 export default class MonsterList extends React.Component {
   constructor(props) {
@@ -31,9 +33,12 @@ export default class MonsterList extends React.Component {
           return <span>一覧読み込み中</span>
       } else if (api_call_status == APP_CONST.API_CALL_STATUS.SUCCESS) {
           var list = [];
-
+          this.state.mosnter_list.sort(function(a,b){
+                return monster_sort.monsterSortNumber(a,b)
+          });
           for(var i in this.state.mosnter_list){
             list.push(
+              <tbody key={this.state.mosnter_list[i].number}>
                 <tr>
                     <th>{this.state.mosnter_list[i].number}</th>
                     <th>{this.state.mosnter_list[i].monster_name}</th>
@@ -46,21 +51,24 @@ export default class MonsterList extends React.Component {
                     <th>{this.state.mosnter_list[i].special_defence}</th>
                     <th>{this.state.mosnter_list[i].speed}</th>
                 </tr>
+              </tbody>
             )}
           return (
-              <table border="1">
-            <tr>
-                <th>図鑑番号</th>
-                <th>名前</th>
-                <th>タイプ１</th>
-                <th>タイプ２</th>
-                <th>HP</th>
-                <th>攻撃</th>
-                <th>防御</th>
-                <th>特攻</th>
-                <th>特防</th>
-                <th>素早さ</th>
-            </tr>
+              <table border="5">
+                 <thead>
+                  <tr>
+                    <th>図鑑番号</th>
+                    <th>名前</th>
+                    <th>タイプ１</th>
+                    <th>タイプ２</th>
+                    <th>HP</th>
+                    <th>攻撃</th>
+                    <th>防御</th>
+                    <th>特攻</th>
+                    <th>特防</th>
+                    <th>素早さ</th>
+                </tr>
+               </thead>
             { list }
             </table>
           )
