@@ -10,7 +10,6 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <p>PMonster!</p>
         <Router>
            <Route path='/' exact component={TopPage}/>
            <Route path='/List' exact component={MonsterList}/>
