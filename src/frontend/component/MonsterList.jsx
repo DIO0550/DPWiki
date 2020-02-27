@@ -33,8 +33,8 @@ export default class MonsterList extends React.Component {
           return <span>一覧読み込み中</span>
       } else if (api_call_status == APP_CONST.API_CALL_STATUS.SUCCESS) {
           var list = [];
-          this.state.mosnter_list.sort(function(a,b){
-                return monster_sort.monsterSortNumber(a,b)
+          this.state.mosnter_list.sort(function(monster1, monster2){
+                return monster_sort.monsterAscendingSortNumber(monster1, monster2)
           });
           for(var i in this.state.mosnter_list){
             list.push(
