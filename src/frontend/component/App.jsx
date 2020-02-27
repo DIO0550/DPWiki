@@ -4,12 +4,14 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import TopPage from './TopPage.jsx';
 import MonsterList from './MonsterList.jsx';
+import TabMenu from './TabMenu.jsx';
 
 export default class App extends React.Component {
   render () {
     return (
       <div>
         <Header />
+        <TabMenu />
         <Router>
            <Route path='/' exact component={TopPage}/>
            <Route path='/List' exact component={MonsterList}/>
