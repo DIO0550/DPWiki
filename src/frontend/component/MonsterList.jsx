@@ -17,6 +17,10 @@ export default class MonsterList extends React.Component {
     }
     this.onClickNumberHeader = this.onClickNumberHeader.bind(this)
     this.onClickNameHeader = this.onClickNameHeader.bind(this)
+    this.onClickType1Header = this.onClickType1Header.bind(this)
+    this.onClickType2Header = this.onClickType2Header.bind(this)
+    this.onClickHitPointHeader = this.onClickHitPointHeader.bind(this)
+    this.onClickAttackHeader = this.onClickAttackHeader.bind(this)
   }
   /**
    * マウント後
@@ -42,7 +46,6 @@ export default class MonsterList extends React.Component {
    * 図鑑番号ヘッダークリック時の処理
    */
   onClickNumberHeader(e) {
-    console.log("onClickNumberHeader")
     if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_NUMBER) {
       this.setState({
         sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_NUMBER
@@ -58,7 +61,6 @@ export default class MonsterList extends React.Component {
    * 名前ヘッダークリック時の処理
    */
   onClickNameHeader(e) {
-    console.log("onClickNumberHeader")
     if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_NAME) {
       this.setState({
         sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_NAME
@@ -70,33 +72,74 @@ export default class MonsterList extends React.Component {
     })
   }
 
-  sortFunction() {
-    // 図鑑番号 - 昇順
-    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_NUMBER) {
-      return monster_sort.monsterAscendingSortNumber
-    } 
-    // 図鑑番号 - 降順
-    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_NUMBER) {
-      return monster_sort.monsterDescendingSortNumber
+  /**
+   * タイプ１ヘッダークリック時の処理
+   */
+  onClickType1Header(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_TYPE1) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_TYPE1
+      })
+      return
     }
-    // 名前 - 昇順
-    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_NAME) {
-      return monster_sort.monsterAscendingSortName
-    }
-    // 名前 - 降順
-    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_NAME) {
-      return monster_sort.monsterDescendingSortName
-    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_TYPE1
+    })
   }
+
+  /**
+   * タイプ２ヘッダークリック時の処理
+   */
+  onClickType2Header(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_TYPE2) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_TYPE2
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_TYPE2
+    })
+  }
+
+  /**
+   * HPヘッダークリック時の処理
+   */
+  onClickHitPointHeader(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_HIT_POINT) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_HIT_POINT
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_HIT_POINT
+    })
+  }
+
+  /**
+   * 攻撃ヘッダークリック時の処理
+   */
+  onClickAttackHeader(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_ATTACK) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_ATTACK
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_ATTACK
+    })
+  }
+  
 
   /**
    * 図鑑番号のヘッダーのソート文字列
    */
-  numberHaderSortMark() {
+  numberHeaderSortMark() {
     if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_NUMBER) {
       return ASCENDING_SORT_MARK
     } 
-    // 図鑑番号 - 降順
     else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_NUMBER) {
       return DESCENDING_SORT_MARK
     }
@@ -106,12 +149,63 @@ export default class MonsterList extends React.Component {
   /**
    * 名前のヘッダーのソート文字列
    */
-  nameHaderSortMark() {
+  nameHeaderSortMark() {
     if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_NAME) {
       return ASCENDING_SORT_MARK
-    } 
-    // 図鑑番号 - 降順
+    }
     else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_NAME) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * タイプ１のヘッダーのソート文字列
+   */
+  type1HeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_TYPE1) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_TYPE1) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * タイプ２のヘッダーのソート文字列
+   */
+  type2HeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_TYPE2) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_TYPE2) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * HPのヘッダーのソート文字列
+   */
+  hitPointHeaderSortMark() {
+    if (this.state.sort_type  == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_HIT_POINT) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_HIT_POINT) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * 攻撃のヘッダーのソート文字列
+   */
+  attakHeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_ATTACK) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_ATTACK) {
       return DESCENDING_SORT_MARK
     }
     return ""
@@ -125,7 +219,7 @@ export default class MonsterList extends React.Component {
           return <span>一覧読み込み中</span>
       } else if (this.state.api_call_status == APP_CONST.API_CALL_STATUS.SUCCESS) {
           var list = [];
-          let sort_function = this.sortFunction() 
+          let sort_function = monster_sort.monsterSortFunction(this.state.sort_type)
           this.state.mosnter_list.sort(function(monster1, monster2){
                 return sort_function(monster1, monster2)
           });
@@ -151,15 +245,24 @@ export default class MonsterList extends React.Component {
                  <thead>
                   <tr>
                     <th onClick={this.onClickNumberHeader}>
-                      図鑑番号 { this.numberHaderSortMark() }
+                      図鑑番号 { this.numberHeaderSortMark() }
                     </th>
                     <th onClick={this.onClickNameHeader}>
-                      名前 { this.nameHaderSortMark() }
+                      名前 { this.nameHeaderSortMark() }
                     </th>
-                    <th>タイプ１</th>
-                    <th>タイプ２</th>
-                    <th>HP</th>
-                    <th>攻撃</th>
+                    <th onClick={this.onClickType1Header}>
+                      タイプ１ { this.type1HeaderSortMark() }
+                    </th>
+                    <th onClick={this.onClickType2Header}>
+                      タイプ２ { this.type2HeaderSortMark() }
+                    </th>
+                    <th onClick={this.onClickHitPointHeader}>
+                      HP { this.hitPointHeaderSortMark() }
+                    </th>
+                    <th onClick={this.onClickAttackHeader}>
+                      攻撃 { this.attakHeaderSortMark() }
+                    </th>
+
                     <th>防御</th>
                     <th>特攻</th>
                     <th>特防</th>
