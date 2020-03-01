@@ -21,6 +21,10 @@ export default class MonsterList extends React.Component {
     this.onClickType2Header = this.onClickType2Header.bind(this)
     this.onClickHitPointHeader = this.onClickHitPointHeader.bind(this)
     this.onClickAttackHeader = this.onClickAttackHeader.bind(this)
+    this.onClickDefenceHeader = this.onClickDefenceHeader.bind(this)
+    this.onClickSpecialAttackHeader = this.onClickSpecialAttackHeader.bind(this)
+    this.onClickSpecialDefenceHeader = this.onClickSpecialDefenceHeader.bind(this)
+    this.onClickSpeedHeader = this.onClickSpeedHeader.bind(this)
   }
   /**
    * マウント後
@@ -132,6 +136,66 @@ export default class MonsterList extends React.Component {
     })
   }
   
+  /**
+   * 防御ヘッダークリック時の処理
+   */
+  onClickDefenceHeader(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_DEFENCE) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_DEFENCE
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_DEFENCE
+    })
+  }
+
+  /**
+   * 特攻ヘッダークリック時の処理
+   */
+  onClickSpecialAttackHeader(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_ATTACK) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_SPECIAL_ATTACK
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_ATTACK
+    })
+  }
+  
+  /**
+   * 特防ヘッダークリック時の処理
+   */
+  onClickSpecialDefenceHeader(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_DEFENCE) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_SPECIAL_DEFENCE
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_DEFENCE
+    })
+  }
+
+  /**
+   * 特防ヘッダークリック時の処理
+   */
+  onClickSpeedHeader(e) {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPEED) {
+      this.setState({
+        sort_type:monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_SPEED
+      })
+      return
+    }
+    this.setState({
+      sort_type:monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPEED
+    })
+  }
+  
 
   /**
    * 図鑑番号のヘッダーのソート文字列
@@ -212,6 +276,58 @@ export default class MonsterList extends React.Component {
   }
 
   /**
+   * 防御のヘッダーのソート文字列
+   */
+  defenceHeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_DEFENCE) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_DEFENCE) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * 特攻のヘッダーのソート文字列
+   */
+  specialAttakHeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_ATTACK) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_SPECIAL_ATTACK) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * 特防のヘッダーのソート文字列
+   */
+  specialDefenceHeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_DEFENCE) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_SPECIAL_DEFENCE) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
+   * 素早さのヘッダーのソート文字列
+   */
+  speedHeaderSortMark() {
+    if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.ASCENDING_SORT_SPEED) {
+      return ASCENDING_SORT_MARK
+    }
+    else if (this.state.sort_type == monster_sort.MONSTER_SORT_TYPE.DESCENDING_SORT_SPEED) {
+      return DESCENDING_SORT_MARK
+    }
+    return ""
+  }
+
+  /**
    * List部分
    */
   pmonsterList() {
@@ -262,11 +378,18 @@ export default class MonsterList extends React.Component {
                     <th onClick={this.onClickAttackHeader}>
                       攻撃 { this.attakHeaderSortMark() }
                     </th>
-
-                    <th>防御</th>
-                    <th>特攻</th>
-                    <th>特防</th>
-                    <th>素早さ</th>
+                    <th onClick={this.onClickDefenceHeader}>
+                      防御 { this.defenceHeaderSortMark() }
+                    </th>
+                    <th onClick={this.onClickSpecialAttackHeader}>
+                      特攻 { this.specialAttakHeaderSortMark() }
+                    </th>
+                    <th onClick={this.onClickSpecialDefenceHeader}>
+                      特防 { this.specialDefenceHeaderSortMark() }
+                    </th>
+                    <th onClick={this.onClickSpeedHeader}>
+                      素早さ { this.speedHeaderSortMark() }
+                    </th>
                 </tr>
                </thead>
             { list }

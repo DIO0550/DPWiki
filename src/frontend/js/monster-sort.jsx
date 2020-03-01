@@ -54,6 +54,39 @@ export function monsterSortFunction(monster_sort_type) {
     else if (monster_sort_type == MONSTER_SORT_TYPE.DESCENDING_SORT_ATTACK) {
       return monsterDescendingSortAttack
     }
+    // DEFENCE - 昇順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.ASCENDING_SORT_DEFENCE) {
+        return monsterAscendingSortDefence
+    }
+    // DEFENCE - 降順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.DESCENDING_SORT_DEFENCE) {
+        return monsterDescendingSortDefence
+    } 
+    // SPECIAL_ATTACK - 昇順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_ATTACK) {
+        return monsterAscendingSortSpecialAttack
+    }
+    // SPECIAL_ATTACK - 降順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.DESCENDING_SORT_SPECIAL_ATTACK) {
+        return monsterDescendingSortSpecialAttack
+    }
+    // SPECIAL_DEFENCE - 昇順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.ASCENDING_SORT_SPECIAL_DEFENCE) {
+        return monsterAscendingSortSpecialDefence
+    }
+    // SPECIAL_DEFENCE - 降順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.DESCENDING_SORT_SPECIAL_DEFENCE) {
+        return monsterDescendingSortSpecialDefence
+    }
+    // SPEED - 昇順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.ASCENDING_SORT_SPEED) {
+        return monsterAscendingSortSpeed
+    }
+    // SPEED - 降順
+    else if (monster_sort_type == MONSTER_SORT_TYPE.DESCENDING_SORT_SPEED) {
+        return monsterDescendingSortSpeed
+    }
+    return monsterAscendingSortNumber
 }
 
 /**
@@ -245,7 +278,7 @@ export function monsterDescendingSortHitPoint(monster1, monster2) {
 }
 
 /**
- * モンスターのHPの昇順でソート
+ * モンスターの攻撃の昇順でソート
  * @param monster1 比較モンスター１
  * @param monster2 比較モンスター2
  * @return 比較結果
@@ -261,7 +294,7 @@ export function monsterAscendingSortAttack(monster1, monster2) {
 }
 
 /**
- * モンスターのHPの降順でソート
+ * モンスターの攻撃の降順でソート
  * @param monster1 比較モンスター１
  * @param monster2 比較モンスター2
  * @return 比較結果
@@ -276,6 +309,133 @@ export function monsterDescendingSortAttack(monster1, monster2) {
     return monsterDescendingSortNumber(monster1, monster2)
 }
 
+/**
+ * モンスターの防御の昇順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterAscendingSortDefence(monster1, monster2) {
+    if (monster1.defence < monster2.defence) {
+        return -1
+    } else if (monster1.defence > monster2.defence) {
+        return 1
+    }  
+    // 同じ場合は、図鑑番号の昇順
+    return monsterAscendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの防御の降順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterDescendingSortDefence(monster1, monster2) {
+    if (monster1.defence < monster2.defence) {
+        return 1
+    } else if (monster1.defence > monster2.defence) {
+        return -1
+    }  
+    // 同じ場合は、図鑑番号の降順
+    return monsterDescendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの特攻の昇順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterAscendingSortSpecialAttack(monster1, monster2) {
+    if (monster1.special_attack < monster2.special_attack) {
+        return -1
+    } else if (monster1.special_attack > monster2.special_attack) {
+        return 1
+    }  
+    // 同じ場合は、図鑑番号の昇順
+    return monsterAscendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの特攻の降順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterDescendingSortSpecialAttack(monster1, monster2) {
+    if (monster1.special_attack < monster2.special_attack) {
+        return 1
+    } else if (monster1.special_attack > monster2.special_attack) {
+        return -1
+    }  
+    // 同じ場合は、図鑑番号の降順
+    return monsterDescendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの特防の昇順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterAscendingSortSpecialDefence(monster1, monster2) {
+    if (monster1.special_defence < monster2.special_defence) {
+        return -1
+    } else if (monster1.special_defence > monster2.special_defence) {
+        return 1
+    }  
+    // 同じ場合は、図鑑番号の昇順
+    return monsterAscendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの特防の降順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterDescendingSortSpecialDefence(monster1, monster2) {
+    if (monster1.special_defence < monster2.special_defence) {
+        return 1
+    } else if (monster1.special_defence > monster2.special_defence) {
+        return -1
+    }  
+    // 同じ場合は、図鑑番号の降順
+    return monsterDescendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの素早さの昇順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterAscendingSortSpeed(monster1, monster2) {
+    if (monster1.speed < monster2.speed) {
+        return -1
+    } else if (monster1.speed > monster2.speed) {
+        return 1
+    }  
+    // 同じ場合は、図鑑番号の昇順
+    return monsterAscendingSortNumber(monster1, monster2)
+}
+
+/**
+ * モンスターの素早さの降順でソート
+ * @param monster1 比較モンスター１
+ * @param monster2 比較モンスター2
+ * @return 比較結果
+ */
+export function monsterDescendingSortSpeed(monster1, monster2) {
+    if (monster1.speed < monster2.speed) {
+        return 1
+    } else if (monster1.speed > monster2.speed) {
+        return -1
+    }  
+    // 同じ場合は、図鑑番号の降順
+    return monsterDescendingSortNumber(monster1, monster2)
+}
 
 /**
  * ソートの種類
@@ -292,5 +452,13 @@ export const MONSTER_SORT_TYPE = {
     ASCENDING_SORT_HIT_POINT:9,
     DESCENDING_SORT_HIT_POINT:10,
     ASCENDING_SORT_ATTACK:11,
-    DESCENDING_SORT_ATTACK:12
+    DESCENDING_SORT_ATTACK:12,
+    ASCENDING_SORT_DEFENCE:13,
+    DESCENDING_SORT_DEFENCE:14,
+    ASCENDING_SORT_SPECIAL_ATTACK:15,
+    DESCENDING_SORT_SPECIAL_ATTACK:16,
+    ASCENDING_SORT_SPECIAL_DEFENCE:17,
+    DESCENDING_SORT_SPECIAL_DEFENCE:18,
+    ASCENDING_SORT_SPEED:19,
+    DESCENDING_SORT_SPEED:20,
 }
