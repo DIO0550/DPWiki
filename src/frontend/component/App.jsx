@@ -6,6 +6,7 @@ import TopPage from './TopPage.jsx';
 import MonsterList from './MonsterList.jsx';
 import TabMenu from './TabMenu.jsx';
 import styles from '../stylesheet/app.sass';
+import APP_CONST from '../js/app-const.jsx';
 
 export default class App extends React.Component {
   render () {
@@ -14,8 +15,8 @@ export default class App extends React.Component {
         <Header />
         <TabMenu />
         <Router>
-           <Route path='/' exact component={TopPage}/>
-           <Route path='/List' exact component={MonsterList}/>
+           <Route path={APP_CONST.ROUTER_PATH.TOP_PAGE} exact component={TopPage}/>
+           <Route path={APP_CONST.ROUTER_PATH.LIST} exact component={MonsterList}/>
         </Router>
         <Footer />
       </div>
