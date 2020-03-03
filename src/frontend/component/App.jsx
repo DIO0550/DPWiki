@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Link, Route}  from 'react-router-dom';
+import {BrowserRouter, Router, Link, Route}  from 'react-router-dom';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import TopPage from './TopPage.jsx';
@@ -13,11 +13,11 @@ export default class App extends React.Component {
     return (
       <div className={styles['app-container']}>
         <Header />
-        <TabMenu />
-        <Router>
+        <BrowserRouter>
+           <TabMenu />
            <Route path={APP_CONST.ROUTER_PATH.TOP_PAGE} exact component={TopPage}/>
            <Route path={APP_CONST.ROUTER_PATH.LIST} exact component={MonsterList}/>
-        </Router>
+        </BrowserRouter>
         <Footer />
       </div>
     )

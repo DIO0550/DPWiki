@@ -3,10 +3,19 @@ import styles from '../stylesheet/tab-menu.sass';
 import APP_CONST from '../js/app-const.jsx';
 import classNames from 'classnames';
 
+import { withRouter, Link } from 'react-router-dom';
+
 // パス名
 const path_name = window.location.pathname;
 
-export default class TabMenu extends React.Component {
+class TabMenu extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleToListPage = this.handleToListPage.bind(this)
+    }
+    handleToListPage(e) {
+        this.props.history.push('/List')
+    } 
 
     /**
      * トップページのクラス名
@@ -45,11 +54,13 @@ export default class TabMenu extends React.Component {
     render() {
         return (
             <div className={styles['tab-menus']}>
-                <div className={this.topPageClassNames()}>
-                    トップページ
+                <div className={this.topPageClassNames()} >
+                    <Link to={APP_CONST.ROUTER_PATH.TOP_PAGE}>
+                        トップページ
+                    </Link>
                 </div>
-                <div className={this.listClassNames()}>
-                    一覧
+                <div className={this.listClassNames()} onClick={this.handleToListPage}>
+                        一覧
                 </div>
                 <div className={styles['tab-menu']}>
                     相性表
@@ -61,3 +72,5 @@ export default class TabMenu extends React.Component {
         );
     }
 }
+
+export default withRouter(TabMenu)
