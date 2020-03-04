@@ -16,21 +16,55 @@ class TabMenu extends React.Component {
         }
         this.pushToListPage = this.pushToListPage.bind(this)
         this.pushToTopPage = this.pushToTopPage.bind(this)
+        this.pushToCompatibilityPage = this.pushToCompatibilityPage.bind(this)
+        this.pushToTeamFormationPage = this.pushToTeamFormationPage.bind(this)
+
         this.listClassNames = this.listClassNames.bind(this)
         this.topPageClassNames = this.topPageClassNames.bind(this)
+        this.compatibilityTableClassNames = this.compatibilityTableClassNames.bind(this)
+        this.teamFormationClassNames = this.teamFormationClassNames.bind(this)
     }
-    pushToTopPage(e) {
+
+    /**
+     * トップページへ遷移
+     */
+    pushToTopPage() {
         this.props.history.push(APP_CONST.ROUTER_PATH.TOP_PAGE)
         this.setState({
             route_path:window.location.pathname
         })
     }
-    pushToListPage(e) {
+
+    /**
+     * 一覧ページへ遷移
+     */
+    pushToListPage() {
         this.props.history.push(APP_CONST.ROUTER_PATH.LIST)
         this.setState({
             route_path:window.location.pathname
         })
-    } 
+    }
+    
+    /**
+     * 相性表ページへ遷移
+     */
+    pushToCompatibilityPage() {
+        this.props.history.push(APP_CONST.ROUTER_PATH.COMPATIBILITY_TABLE)
+        this.setState({
+            route_path:window.location.pathname
+        })
+    }
+
+    /**
+     * チーム編成表ページに遷移
+     */
+    pushToTeamFormationPage() {
+        this.props.history.push(APP_CONST.ROUTER_PATH.TEAM_FORMATION)
+        this.setState({
+            route_path:window.location.pathname
+        })
+    }
+
     /**
      * トップページのクラス名
      */
@@ -55,14 +89,20 @@ class TabMenu extends React.Component {
      * 相性表のクラス名
      */
     compatibilityTableClassNames() {
-
+        var className = classNames(styles['tab-menu'], {
+            [styles['tab-select']] : this.state.route_path == APP_CONST.ROUTER_PATH.COMPATIBILITY_TABLE
+        })
+        return className
     }
 
     /**
      * チーム編成のクラス名
      */
     teamFormationClassNames() {
-
+        var className = classNames(styles['tab-menu'], {
+            [styles['tab-select']] : this.state.route_path == APP_CONST.ROUTER_PATH.TEAM_FORMATION
+        })
+        return className
     }
 
     render() {
@@ -74,10 +114,10 @@ class TabMenu extends React.Component {
                 <div className={this.listClassNames()} onClick={this.pushToListPage}>
                         一覧
                 </div>
-                <div className={styles['tab-menu']}>
+                <div className={this.compatibilityTableClassNames()} onClick={this.pushToCompatibilityPage}>
                     相性表
                 </div>
-                <div className={styles['tab-menu']}>
+                <div className={this.teamFormationClassNames()} onClick={this.pushToTeamFormationPage}>
                     チーム編成
                 </div>
             </div>
