@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_125849) do
+ActiveRecord::Schema.define(version: 2020_03_05_131126) do
 
   create_table "pmonsters", primary_key: "number", id: :string, limit: 7, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "monster_name"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2020_02_18_125849) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["type1_id"], name: "index_pmonsters_on_type1_id"
     t.index ["type2_id"], name: "index_pmonsters_on_type2_id"
+  end
+
+  create_table "team_formations", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "team_id", null: false
+    t.string "number", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["number", "team_id"], name: "index_team_formations_on_number_and_team_id", unique: true
   end
 
   create_table "type1s", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,4 +52,5 @@ ActiveRecord::Schema.define(version: 2020_02_18_125849) do
 
   add_foreign_key "pmonsters", "type1s"
   add_foreign_key "pmonsters", "type2s"
+  add_foreign_key "team_formations", "pmonsters", column: "number", primary_key: "number"
 end
