@@ -1,10 +1,23 @@
 
+
+ /**
+  * APIのベースURL
+  */
+const API_BASE_URL = "http://localhost:3000/api/"
+
 const APP_CONST = {
+
+    
     
     /**
-     * モンスター一覧のAPIのパス
+     * モンスター一覧のAPIのURL
      */
-    PMONSTERS_LIST_API: "http://localhost:3000/api/v1/pmonsters",
+    PMONSTERS_LIST_API: API_BASE_URL + "v1/pmonsters",
+
+    /**
+     * チーム編成のAPIのURL
+     */
+    PMONSTERS_TEMA_FORMATIONS_API: API_BASE_URL +  "v1/team_formations",
     
     /**
      * APIの呼び出しステータス
