@@ -33,7 +33,6 @@ export default class MonsterList extends React.Component {
     axios.get(APP_CONST.PMONSTERS_LIST_API, { withCredentials: true })
     .then((response) => {
         console.debug(response, "ressponse");
-        this.state.mosnter_list = response.data
         this.setState({
             mosnter_list: response.data,
             api_call_status: APP_CONST.API_CALL_STATUS.SUCCESS
@@ -339,7 +338,7 @@ export default class MonsterList extends React.Component {
           this.state.mosnter_list.sort(function(monster1, monster2){
                 return sort_function(monster1, monster2)
           });
-          for(var i in this.state.mosnter_list){
+          for(var i in this.state.mosnter_list) {
             list.push(
               <tbody key={this.state.mosnter_list[i].number}>
                 <tr>
