@@ -6,8 +6,6 @@
 const API_BASE_URL = "http://localhost:3000/api/"
 
 const APP_CONST = {
-
-    
     
     /**
      * モンスター一覧のAPIのURL
@@ -18,6 +16,11 @@ const APP_CONST = {
      * チーム編成のAPIのURL
      */
     PMONSTERS_TEMA_FORMATIONS_API: API_BASE_URL +  "v1/team_formations",
+
+    /**
+     * タイプ一覧のAPIのURL
+     */
+    PMONStERS_TYPE_API: API_BASE_URL + "v1/type1s",
     
     /**
      * APIの呼び出しステータス
