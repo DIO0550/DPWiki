@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import APP_CONST from '../js/app-const.jsx';
 import * as monster_sort from '../js/monster-sort.jsx';
-import '../stylesheet/monster-list.sass';
+import styles from '../stylesheet/monster-list.sass';
 
 const ASCENDING_SORT_MARK = " ▲"
 const DESCENDING_SORT_MARK = " ▼"
@@ -356,37 +356,37 @@ export default class MonsterList extends React.Component {
               </tbody>
             )}
           return (
-              <table border="5">
+              <table border="5" className={styles['monster-list-table']} >
                  <thead>
                   <tr>
-                    <th onClick={this.onClickNumberHeader}>
+                    <th onClick={this.onClickNumberHeader} className={styles['monster-list-header']}>
                       図鑑番号 { this.numberHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickNameHeader}>
+                    <th onClick={this.onClickNameHeader} className={styles['monster-list-header']}>
                       名前 { this.nameHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickType1Header}>
+                    <th onClick={this.onClickType1Header} className={styles['monster-list-header']}>
                       タイプ１ { this.type1HeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickType2Header}>
+                    <th onClick={this.onClickType2Header} className={styles['monster-list-header']}>
                       タイプ２ { this.type2HeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickHitPointHeader}>
+                    <th onClick={this.onClickHitPointHeader} className={styles['monster-list-header']}>
                       HP { this.hitPointHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickAttackHeader}>
+                    <th onClick={this.onClickAttackHeader} className={styles['monster-list-header']}>
                       攻撃 { this.attakHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickDefenceHeader}>
+                    <th onClick={this.onClickDefenceHeader} className={styles['monster-list-header']}>
                       防御 { this.defenceHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickSpecialAttackHeader}>
+                    <th onClick={this.onClickSpecialAttackHeader} className={styles['monster-list-header']}>
                       特攻 { this.specialAttakHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickSpecialDefenceHeader}>
+                    <th onClick={this.onClickSpecialDefenceHeader} className={styles['monster-list-header']}>
                       特防 { this.specialDefenceHeaderSortMark() }
                     </th>
-                    <th onClick={this.onClickSpeedHeader}>
+                    <th onClick={this.onClickSpeedHeader} className={styles['monster-list-header']}>
                       素早さ { this.speedHeaderSortMark() }
                     </th>
                 </tr>
