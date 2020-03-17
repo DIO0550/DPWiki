@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import APP_CONST from '../js/app-const.jsx';
+import styles from'../stylesheet/compatibility-table.sass';
 
 const compatibility = require('../resource/compatibility.json');
 
@@ -38,7 +39,9 @@ export default class CompatibilityTable extends React.Component {
         for (var i in this.state.type_list) {
             type_head.push(
               <th key={this.state.type_list[i].id}>
-                { this.state.type_list[i].type1_name }
+                <span className={styles['compatibility-table-head']}>
+                  { this.state.type_list[i].type1_name }
+                </span>
               </th>
             )
         }
@@ -47,16 +50,19 @@ export default class CompatibilityTable extends React.Component {
             <thead>
                 <tr>
                   <th>
-                    タイプ
+                    <span>
+                      タイプ
+                    </span>
                   </th>
                   { type_head }
               </tr>
             </thead>
         )
+        for (var i in this.state.type_list) {
         list.push(
           <tbody>
             <tr>
-                <th>○</th>
+                <th>{ this.state.type_list[i].type1_name  }</th>
                 <th>○</th>
                 <th>○</th>
                 <th>○</th>
@@ -78,9 +84,10 @@ export default class CompatibilityTable extends React.Component {
             </tr>
           </tbody>
         )
+        }
         
         return ( 
-          <table border="5">
+          <table border="5" className={styles['compatibility-table']}>
             { list }
           </table>
         )
