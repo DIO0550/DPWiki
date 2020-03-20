@@ -63,24 +63,24 @@ export default class CompatibilityTable extends React.Component {
           <tbody>
             <tr>
                 <th>{ this.state.type_list[i].type1_name  }</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
-                <th>○</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[0].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[1].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[2].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[3].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[4].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[5].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[6].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[7].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[8].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[9].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[10].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[11].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[12].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[13].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[14].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[15].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[16].type1_name] }</th>
+                <th>{ compatibility[this.state.type_list[i].type1_name][this.state.type_list[17].type1_name] }</th>
             </tr>
           </tbody>
         )
