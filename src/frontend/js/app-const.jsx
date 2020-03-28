@@ -35,7 +35,9 @@ const APP_CONST = {
         TOP_PAGE: "/",
         LIST: "/List",
         COMPATIBILITY_TABLE: "/CompatibilityTable",
-        TEAM_FORMATION: "/TeamFormation"
+        TEAM_FORMATION: "/TeamFormation",
+        CREATE_TEAM: "/CreateTeam",
+        EDIT_TEAM: "/EditTeam"
     }
 }
 
