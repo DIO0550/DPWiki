@@ -6,4 +6,15 @@ class Api::V1::TeamFormationsController < ApplicationController
         @team_formations = TeamFormation.joins(pmonster: :type1).joins(pmonster: :type2).select(select_column)
         render json: @team_formations
     end
+
+    def create
+        @params = JSON.parse(request.body)
+        print @params
+    end
+
+    def delete
+    end
+
+    def update
+    end
 end

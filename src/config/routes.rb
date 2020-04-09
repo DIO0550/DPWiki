@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
       # チーム編成
       get '/team_formations', to: 'team_formations#index' 
+      post '/team_formations', to: 'team_formations#create' 
     end
   end
   root to: 'api/v1/pmonsters#index'
